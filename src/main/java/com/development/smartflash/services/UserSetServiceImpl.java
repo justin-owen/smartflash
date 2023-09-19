@@ -49,6 +49,11 @@ public class UserSetServiceImpl implements UserSetService {
         });
     }
 
+    public List<UserSetDto> getAllSets(){
+        List<UserSet> setList = userSetRepository.findAll();
+        return setList.stream().map(set -> new UserSetDto(set)).collect(Collectors.toList());
+    }
+
     @Override
     public List<UserSetDto> getAllSetsByUserId(Long userId){
         Optional<User> userOptional = userRepository.findById(userId);

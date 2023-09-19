@@ -18,4 +18,6 @@ public interface UserSetService {
     List<UserSetDto> getAllSetsByUserId(Long userId);
 
     List<UserSetDto> getAllSetsBySubject(String subject);
+
+    List<UserSetDto> getAllSets();
 }

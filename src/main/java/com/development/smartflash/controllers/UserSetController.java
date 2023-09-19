@@ -14,6 +14,11 @@ public class UserSetController {
     @Autowired
     private UserSetService userSetService;
 
+    @GetMapping("/")
+    public List<UserSetDto> getAllSets(){
+        return userSetService.getAllSets();
+    }
+
     @GetMapping("/user/{userId}")
     public List<UserSetDto> getSetsByUser(@PathVariable Long userId){
         return userSetService.getAllSetsByUserId(userId);

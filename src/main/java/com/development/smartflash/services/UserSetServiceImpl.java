@@ -6,7 +6,6 @@ import com.development.smartflash.entities.UserSet;
 import com.development.smartflash.repositories.UserRepository;
 import com.development.smartflash.repositories.UserSetRepository;
 import jakarta.transaction.Transactional;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +47,7 @@ public class UserSetServiceImpl implements UserSetService {
             userSetRepository.saveAndFlush(set);
         });
     }
-
+    @Override
     public List<UserSetDto> getAllSets(){
         List<UserSet> setList = userSetRepository.findAll();
         return setList.stream().map(set -> new UserSetDto(set)).collect(Collectors.toList());

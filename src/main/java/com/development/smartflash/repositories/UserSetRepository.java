@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface UserSetRepository extends JpaRepository<UserSet, Long> {
     List<UserSet> findAllByUserEquals(User user);
 
-    @Query("SELECT s from sets s where s.subject=?1")
+    @Query(value = "SELECT s FROM sets s WHERE s.subject=?1")
     Optional<UserSet> findAllBySubject(String subject);
 }

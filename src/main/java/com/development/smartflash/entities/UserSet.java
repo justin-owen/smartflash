@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity(name = "sets")
 @Table(name = "Sets")
 @Data
 @AllArgsConstructor

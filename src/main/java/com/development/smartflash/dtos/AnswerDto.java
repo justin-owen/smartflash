@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class AnswerDto implements Serializable {
     private Long id;
     private String answer_string;
-    private QuestionDto questionDto;
+//    private QuestionDto questionDto;
 
     public AnswerDto(Answer answer){
         if (answer.getId() != null){

@@ -11,8 +11,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserSetRepository extends JpaRepository<UserSet, Long> {
+
     List<UserSet> findAllByUserEquals(User user);
 
     @Query(value = "SELECT s FROM sets s WHERE s.subject=?1")
     Optional<UserSet> findAllBySubject(String subject);
+
+    Optional<UserSet> findById(Long setId);
 }

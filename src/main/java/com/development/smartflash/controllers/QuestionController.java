@@ -1,18 +1,24 @@
 package com.development.smartflash.controllers;
 
+import com.development.smartflash.dtos.AnswerDto;
 import com.development.smartflash.dtos.QuestionDto;
 import com.development.smartflash.dtos.UserSetDto;
+import com.development.smartflash.services.AnswerService;
 import com.development.smartflash.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/questions")
 public class QuestionController {
     @Autowired
     private QuestionService questionService;
+
+    @Autowired
+    private AnswerService answerService;
 
 
 
@@ -22,8 +28,11 @@ public class QuestionController {
     }
 
     @PostMapping("/set/{setId}")
-    public void addQuestion(@RequestBody QuestionDto questionDto, @PathVariable Long setId){
-        questionService.addQuestion(questionDto, setId);
+    public void addQuestion(@RequestBody Map<String, String> json , @PathVariable Long setId){
+        String questionString = json.get("question_string");
+        String answerString = json.get("answer_string");
+        Long questionId = questionService.addQuestion(questionString, setId);
+//        answerService.addAnswer(answerDto, questionId);
     }
 
     @DeleteMapping("/{questionId}")

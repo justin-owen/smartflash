@@ -1,6 +1,7 @@
 package com.development.smartflash.entities;
 
 import com.development.smartflash.dtos.QuestionDto;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -8,12 +9,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Optional;
+
+
 @Entity
 @Table(name = "Questions")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Question {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,5 +42,9 @@ public class Question {
         if (questionDto.getQuestion_string() != null){
             this.question_string = questionDto.getQuestion_string();
         }
+    }
+    public Question(String question_string, Optional<UserSet> userSetOptional){
+        this.question_string = question_string;
+        this.set = userSetOptional.get();
     }
 }

@@ -12,8 +12,8 @@ import java.io.Serializable;
 public class QuestionDto implements Serializable {
     private Long id;
     private String question_string;
-    private UserSetDto setDto;
-    private AnswerDto answerDto;
+//    private UserSetDto setDto;
+//    private AnswerDto answerDto;
 
     public QuestionDto(Question question){
         if (question.getId() != null){

@@ -1,9 +1,7 @@
 package com.development.smartflash.services;
 
 import com.development.smartflash.dtos.QuestionDto;
-import com.development.smartflash.dtos.UserSetDto;
 import com.development.smartflash.entities.Question;
-import com.development.smartflash.entities.User;
 import com.development.smartflash.entities.UserSet;
 import com.development.smartflash.repositories.QuestionRepository;
 import com.development.smartflash.repositories.UserSetRepository;
@@ -24,12 +22,13 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionRepository questionRepository;
 
 
-
     @Override
     public List<QuestionDto> getAllQuestionsBySetId(Long setId){
         Optional<UserSet> setOptional = userSetRepository.findById(setId);
+        System.out.println(setId);
         if (setOptional.isPresent()){
-            List<Question> questions = questionRepository.findAllBySetId(setOptional.get());
+
+            List<Question> questions = questionRepository.findAllBySet(setOptional.get());
             return questions.stream().map(question -> new QuestionDto(question)).collect(Collectors.toList());
         }
         return Collections.emptyList();
@@ -37,11 +36,12 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     @Transactional
-    public void addQuestion(QuestionDto questionDto, Long setId){
+    public Long addQuestion(String questionString, Long setId){
         Optional<UserSet> userSetOptional = userSetRepository.findById(setId);
-        Question question = new Question(questionDto);
-        userSetOptional.ifPresent(question::setSet);
+        Question question = new Question(questionString, userSetOptional);
+//        userSetOptional.ifPresent(question::setSet);
         questionRepository.saveAndFlush(question);
+        return question.getId();
     }
 
     @Override
@@ -60,6 +60,4 @@ public class QuestionServiceImpl implements QuestionService {
         Optional<Question> questionOptional = questionRepository.findById(questionId);
         questionOptional.ifPresent(question -> questionRepository.delete(question));
     }
-
-
 }

@@ -1,13 +1,11 @@
 package com.development.smartflash.controllers;
 
 import com.development.smartflash.dtos.UserDto;
+import com.development.smartflash.dtos.UserSetDto;
 import com.development.smartflash.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,11 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @PostMapping("/login")
+    public List<String> userLogin(@RequestBody UserDto userDto) {
+        return userService.userLogin(userDto);
+    }
+
     @PostMapping("/register")
     public List<String> addUser(@RequestBody UserDto userDto) {
         String passHash = passwordEncoder.encode(userDto.getPassword());
@@ -26,8 +29,4 @@ public class UserController {
         return userService.addUser(userDto);
     }
 
-    @PostMapping("/login")
-    public List<String> userLogin(@RequestBody UserDto userDto) {
-        return userService.userLogin(userDto);
-    }
 }

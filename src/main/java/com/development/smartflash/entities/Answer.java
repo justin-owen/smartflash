@@ -21,7 +21,9 @@ public class Answer {
     @Column(columnDefinition = "text")
     private String answer_string;
 
-    @OneToOne(mappedBy = "answer")
+    @OneToOne
+    @JoinColumn(name = "question_id",
+            referencedColumnName = "id")
     @JsonBackReference(value = "question_answer")
     private Question question;
 

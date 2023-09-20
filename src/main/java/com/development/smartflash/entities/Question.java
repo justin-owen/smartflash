@@ -22,9 +22,7 @@ public class Question {
     @Column(columnDefinition = "text")
     private String question_string;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "answer_id",
-    referencedColumnName = "id")
+    @OneToOne(mappedBy = "question", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "question_answer")
     private Answer answer;
 

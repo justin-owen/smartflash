@@ -1,9 +1,11 @@
 package com.development.smartflash.services;
 
 import com.development.smartflash.dtos.UserSetDto;
+import com.development.smartflash.entities.UserSet;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserSetService {
     @Transactional
@@ -15,11 +17,11 @@ public interface UserSetService {
     @Transactional
     void editSetById(UserSetDto setDto);
 
-    List<UserSetDto> getAllSetsByUserId(Long userId);
+    List<UserSet> getAllSetsByUserId(Long userId);
 
-    List<UserSetDto> getAllSetsBySubject(String subject);
+    Optional<UserSet> getAllSetsBySubject(String subject);
 
-    List<UserSetDto> getAllSets();
+    List<UserSet> getAllSets();
 
 
 }

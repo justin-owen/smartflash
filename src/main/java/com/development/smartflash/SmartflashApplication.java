@@ -9,5 +9,4 @@ public class SmartflashApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmartflashApplication.class, args);
 	}
-
 }

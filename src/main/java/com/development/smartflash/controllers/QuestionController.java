@@ -1,9 +1,6 @@
 package com.development.smartflash.controllers;
 
-import com.development.smartflash.dtos.AnswerDto;
 import com.development.smartflash.dtos.QuestionDto;
-import com.development.smartflash.dtos.UserSetDto;
-import com.development.smartflash.services.AnswerService;
 import com.development.smartflash.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +14,8 @@ public class QuestionController {
     @Autowired
     private QuestionService questionService;
 
-    @Autowired
-    private AnswerService answerService;
 
-
+    private QuestionDto question;
 
     @GetMapping("/set/{setId}")
     public List<QuestionDto> getQuestionsBySetId(@PathVariable Long setId){
@@ -31,8 +26,7 @@ public class QuestionController {
     public void addQuestion(@RequestBody Map<String, String> json , @PathVariable Long setId){
         String questionString = json.get("question_string");
         String answerString = json.get("answer_string");
-        Long questionId = questionService.addQuestion(questionString, setId);
-//        answerService.addAnswer(answerDto, questionId);
+        questionService.addQuestion(questionString, answerString, setId);
     }
 
     @DeleteMapping("/{questionId}")

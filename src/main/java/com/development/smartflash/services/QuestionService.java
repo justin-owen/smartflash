@@ -9,11 +9,12 @@ public interface QuestionService {
     List<QuestionDto> getAllQuestionsBySetId(Long setId);
 
     @Transactional
-    Long addQuestion(String questionString, Long setId);
+    void addQuestion(String questionString, String answerString, Long setId);
 
     @Transactional
     void editQuestion(QuestionDto questionDto);
 
     @Transactional
     void deleteQuestion(Long questionId);
+
 }

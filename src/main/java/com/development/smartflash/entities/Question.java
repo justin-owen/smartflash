@@ -3,7 +3,6 @@ package com.development.smartflash.entities;
 import com.development.smartflash.dtos.QuestionDto;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +27,8 @@ public class Question {
     @Column(columnDefinition = "text")
     private String question_string;
 
-    @OneToOne(mappedBy = "question", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "question_answer")
-    private Answer answer;
+    @Column(columnDefinition = "text")
+    private String answer_string;
 
     @ManyToOne
     @JoinColumn(name = "set_id",
@@ -43,8 +41,15 @@ public class Question {
             this.question_string = questionDto.getQuestion_string();
         }
     }
-    public Question(String question_string, Optional<UserSet> userSetOptional){
-        this.question_string = question_string;
-        this.set = userSetOptional.get();
+    public Question(String question_string, String answer_string, UserSet set){
+        if (question_string != null){
+            this.question_string = question_string;
+        }
+        if (answer_string != null){
+            this.answer_string = answer_string;
+        }
+        if (set != null){
+            this.set = set;
+        }
     }
 }

@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserSetServiceImpl implements UserSetService {
@@ -25,8 +24,7 @@ public class UserSetServiceImpl implements UserSetService {
     @Transactional
     public void addSet(UserSetDto setDto, Long userId){
         Optional<User> userOptional = userRepository.findById(userId);
-        UserSet set = new UserSet(setDto);
-        userOptional.ifPresent(set::setUser);
+        UserSet set = new UserSet(setDto, userOptional.get());
         userSetRepository.saveAndFlush(set);
     }
 
@@ -48,27 +46,22 @@ public class UserSetServiceImpl implements UserSetService {
         });
     }
     @Override
-    public List<UserSetDto> getAllSets(){
-        List<UserSet> setList = userSetRepository.findAll();
-        return setList.stream().map(set -> new UserSetDto(set)).collect(Collectors.toList());
+    public List<UserSet> getAllSets(){
+        return userSetRepository.findAll();
     }
 
     @Override
-    public List<UserSetDto> getAllSetsByUserId(Long userId){
+    public List<UserSet> getAllSetsByUserId(Long userId){
         Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()){
             List<UserSet> setList = userSetRepository.findAllByUserEquals(userOptional.get());
-            return setList.stream().map(set -> new UserSetDto(set)).collect(Collectors.toList());
+            return setList;
         }
         return Collections.emptyList();
     }
 
     @Override
-    public List<UserSetDto> getAllSetsBySubject(String subject){
-        Optional<UserSet> setList = userSetRepository.findAllBySubject(subject);
-        if (setList.isPresent()){
-            return setList.stream().map(set -> new UserSetDto(set)).collect(Collectors.toList());
-        }
-        return Collections.emptyList();
+    public Optional<UserSet> getAllSetsBySubject(String subject){
+        return userSetRepository.findAllBySubject(subject);
     }
 }

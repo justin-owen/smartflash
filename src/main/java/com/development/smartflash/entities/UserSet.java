@@ -28,7 +28,7 @@ public class UserSet {
     @Column(name = "subject")
     private String subject;
 
-    @OneToMany(mappedBy = "set", fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "set", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "userSet_question")
     private Set<Question> questionSet = new HashSet<>();
 
@@ -38,12 +38,15 @@ public class UserSet {
     @JsonBackReference(value = "user_userSet")
     private User user;
 
-    public UserSet(UserSetDto setDto){
+    public UserSet(UserSetDto setDto, User user){
         if (setDto.getName() != null){
             this.name = setDto.getName();
         }
         if (setDto.getSubject() != null){
             this.subject = setDto.getSubject();
+        }
+        if (user != null){
+            this.user = user;
         }
     }
 }

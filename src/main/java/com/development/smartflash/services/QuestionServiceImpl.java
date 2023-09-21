@@ -27,7 +27,6 @@ public class QuestionServiceImpl implements QuestionService {
         Optional<UserSet> setOptional = userSetRepository.findById(setId);
         System.out.println(setId);
         if (setOptional.isPresent()){
-
             List<Question> questions = questionRepository.findAllBySet(setOptional.get());
             return questions.stream().map(question -> new QuestionDto(question)).collect(Collectors.toList());
         }
@@ -36,12 +35,11 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     @Transactional
-    public Long addQuestion(String questionString, Long setId){
+    public void addQuestion(String questionString, String answerString, Long setId){
         Optional<UserSet> userSetOptional = userSetRepository.findById(setId);
-        Question question = new Question(questionString, userSetOptional);
-//        userSetOptional.ifPresent(question::setSet);
+        Question question = new Question(questionString, answerString, userSetOptional.get());
+        userSetOptional.ifPresent(question::setSet);
         questionRepository.saveAndFlush(question);
-        return question.getId();
     }
 
     @Override
@@ -50,6 +48,7 @@ public class QuestionServiceImpl implements QuestionService {
         Optional<Question> questionOptional = questionRepository.findById(questionDto.getId());
         questionOptional.ifPresent(question -> {
             question.setQuestion_string(questionDto.getQuestion_string());
+            question.setAnswer_string(questionDto.getAnswer_string());
             questionRepository.saveAndFlush(question);
         });
     }
@@ -60,4 +59,6 @@ public class QuestionServiceImpl implements QuestionService {
         Optional<Question> questionOptional = questionRepository.findById(questionId);
         questionOptional.ifPresent(question -> questionRepository.delete(question));
     }
+
+
 }

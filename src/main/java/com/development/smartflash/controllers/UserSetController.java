@@ -1,6 +1,8 @@
 package com.development.smartflash.controllers;
 
+import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
+import com.development.smartflash.entities.User;
 import com.development.smartflash.entities.UserSet;
 import com.development.smartflash.services.UserSetService;
 import com.development.smartflash.services.UserSetServiceImpl;

@@ -1,5 +1,6 @@
 package com.development.smartflash.dtos;
 
+import com.development.smartflash.entities.User;
 import com.development.smartflash.entities.UserSet;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,10 +17,10 @@ public class UserSetDto implements Serializable {
     private Long id;
     private String name;
     private String subject;
-    private UserDto userDto;
+    private String userName;
     private Set<QuestionDto> questionDtoSet = new HashSet<>();
 
-    public UserSetDto(UserSet set) {
+    public UserSetDto(UserSet set, User user) {
         if (set.getId() != null){
             this.id = set.getId();
         }
@@ -29,5 +30,9 @@ public class UserSetDto implements Serializable {
         if (set.getSubject() != null){
             this.subject = set.getSubject();
         }
+        if (user != null){
+            this.userName = user.getUsername();
+        }
+
     }
 }

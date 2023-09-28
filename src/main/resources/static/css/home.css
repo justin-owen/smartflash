@@ -1,0 +1,155 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    color: brown;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: black 2px solid;
+    box-shadow: black 2px 2px 8px;
+    background-color: blanchedalmond
+}
+a{
+    color: brown;
+    text-decoration: none;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(260, 286, 260);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content a {
+    color: brown;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropbtn{
+    cursor: pointer;
+}
+.dropdown-content a{
+    border-bottom: black solid 1px;
+    font-size: 13px;
+}
+#science{
+    border-bottom: none;
+}
+#recentSets{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+h2{
+    font-size: 35px;
+}
+#newSet{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+#newSet button{
+    width: 90px;
+    height: 40px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content{
+    background-color: white;
+    padding: 0 8px 28px 28px;
+    margin: 15% auto;
+    border: 1px solid black;
+    width: 80%;
+    height: fit-content;
+}
+.modal-body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    top: 0;
+}
+.close:hover,
+.close:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-body form{
+    display: flex;
+    flex-direction: column;
+    align-items:left;
+}
+.modal-body input{
+    width: 400px;
+    height: 30px;
+    margin-left: 10px;
+}
+.modal-body select{
+    width: 300px;
+}
+
+.setFormItem{
+    margin-bottom: 20px;
+    right: 100px;
+}
+#submitSet{
+    margin-left: 200px;
+}
+#logout{
+    cursor: pointer;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.setCard{
+    border: black 1px solid;
+    width: 800px;
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: white;
+    color: black;
+}
+.setCard:hover{
+    box-shadow: 2px 2px 5px;
+}

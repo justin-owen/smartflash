@@ -1,5 +1,6 @@
 package com.development.smartflash.services;
 
+import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
 import com.development.smartflash.entities.User;
 import com.development.smartflash.entities.UserSet;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserSetServiceImpl implements UserSetService {
@@ -23,8 +25,10 @@ public class UserSetServiceImpl implements UserSetService {
     @Override
     @Transactional
     public void addSet(UserSetDto setDto, Long userId){
-        Optional<User> userOptional = userRepository.findById(userId);
-        UserSet set = new UserSet(setDto, userOptional.get());
+        setDto.setUserName(userRepository.findById(userId).get().getUsername());
+        System.out.println(setDto);
+        UserSet set = new UserSet(setDto);
+        set.setUserName(setDto.getUserName());
         userSetRepository.saveAndFlush(set);
     }
 
@@ -45,9 +49,12 @@ public class UserSetServiceImpl implements UserSetService {
             userSetRepository.saveAndFlush(set);
         });
     }
+
+
     @Override
     public List<UserSet> getAllSets(){
-        return userSetRepository.findAll();
+
+        return userSetRepository.findAll().stream().limit(10).collect(Collectors.toList());
     }
 
     @Override
@@ -64,4 +71,5 @@ public class UserSetServiceImpl implements UserSetService {
     public Optional<UserSet> getAllSetsBySubject(String subject){
         return userSetRepository.findAllBySubject(subject);
     }
+
 }

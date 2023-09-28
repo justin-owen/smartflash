@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+<nav>
+    <h1>Smartflash</h1>
+    <div class="dropdown">
+        <h3 class="dropbtn">Subjects</h3>
+        <div class="dropdown-content">
+            <a href="#">Art</a>
+            <a href="#">Computer Science</a>
+            <a href="#">Economics</a>
+            <a href="#">English</a>
+            <a href="#">Foreign Language</a>
+            <a href="#">History</a>
+            <a href="#">Math</a>
+            <a href="#" id="science">Science</a>
+
+        </div>
+    </div>
+    <h3><a href="/mysets">My Sets</a></h3>
+    <h3><a onclick="handleLogout()" id="logout" href="http://localhost:8080/login">Logout</a></h3>
+</nav>
+<section id="newSet">
+    <h2>Create a New Set</h2>
+    <button id="myBtn">Create Set</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+
+            </div>
+            <div class="modal-body">
+                <h2>Create a New Set</h2>
+                <form action="" id="setForm">
+                    <label for="setName" class="setFormItem">Name: <input type="text" id="setName" placeholder="Set Name..." style="padding-left: 5px;"></label>
+                    <label for="setSubject" class="setFormItem">Subject: <select name="setSubject" id="setSubject">
+                        <option value="" disabled selected hidden>(Choose a Subject)</option>
+                        <option value="Art">Art</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Economics">Economics</option>
+                        <option value="English">English</option>
+                        <option value="Foreign Language">Foreign Language</option>
+                        <option value="History">History</option>
+                        <option value="Math">Math</option>
+                        <option value="Science">Science</option>
+                    </select></label>
+                    <button type="submit" id="submitSet">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="recentSets">
+    <h2>Recent Sets</h2>
+    <div id="sets"></div>
+</section>
+<script src="js/home.js"></script>
+</body>
+</html>

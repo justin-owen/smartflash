@@ -16,4 +16,7 @@ public class CommonController {
     public String registerPage(){
         return "register.html";
     }
+
+    @GetMapping("/home")
+    public String homePage() {return "home.html";}
 }

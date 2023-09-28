@@ -1,5 +1,6 @@
 package com.development.smartflash.services;
 
+import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
 import com.development.smartflash.entities.UserSet;
 import jakarta.transaction.Transactional;
@@ -22,6 +23,5 @@ public interface UserSetService {
     Optional<UserSet> getAllSetsBySubject(String subject);
 
     List<UserSet> getAllSets();
-
 
 }

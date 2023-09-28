@@ -2,6 +2,7 @@ package com.development.smartflash.controllers;
 
 import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
+import com.development.smartflash.entities.User;
 import com.development.smartflash.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -27,6 +28,11 @@ public class UserController {
         String passHash = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(passHash);
         return userService.addUser(userDto);
+    }
+
+    @GetMapping("/user/{userId}")
+    public User getUserById(@PathVariable Long userId){
+        return userService.findById(userId);
     }
 
 }

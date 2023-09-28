@@ -1,5 +1,6 @@
 package com.development.smartflash.entities;
 
+import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -38,15 +39,20 @@ public class UserSet {
     @JsonBackReference(value = "user_userSet")
     private User user;
 
-    public UserSet(UserSetDto setDto, User user){
+    @Column
+    private String userName;
+
+    public UserSet(UserSetDto setDto){
         if (setDto.getName() != null){
             this.name = setDto.getName();
         }
         if (setDto.getSubject() != null){
             this.subject = setDto.getSubject();
         }
-        if (user != null){
-            this.user = user;
+        System.out.println("In service");
+        System.out.println(setDto);
+        if (userName != null){
+            this.userName = setDto.getUserName();
         }
     }
 }

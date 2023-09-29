@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/questions")
@@ -20,6 +21,11 @@ public class QuestionController {
     @GetMapping("/set/{setId}")
     public List<QuestionDto> getQuestionsBySetId(@PathVariable Long setId){
         return questionService.getAllQuestionsBySetId(setId);
+    }
+
+    @GetMapping("/{questionId}")
+    public Optional<QuestionDto> getNoteById(@PathVariable Long questionId){
+        return questionService.getQuestionById(questionId);
     }
 
     @PostMapping("/set/{setId}")

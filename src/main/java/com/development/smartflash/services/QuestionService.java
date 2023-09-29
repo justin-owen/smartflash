@@ -4,6 +4,7 @@ import com.development.smartflash.dtos.QuestionDto;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface QuestionService {
     List<QuestionDto> getAllQuestionsBySetId(Long setId);
@@ -17,4 +18,5 @@ public interface QuestionService {
     @Transactional
     void deleteQuestion(Long questionId);
 
+    Optional<QuestionDto> getQuestionById(Long questionId);
 }

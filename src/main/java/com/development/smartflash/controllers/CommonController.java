@@ -19,4 +19,7 @@ public class CommonController {
 
     @GetMapping("/home")
     public String homePage() {return "home.html";}
+
+    @GetMapping("/set")
+    public String setPage(){return "set.html";}
 }

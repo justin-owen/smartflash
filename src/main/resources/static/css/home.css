@@ -149,6 +149,7 @@ h2{
     padding-right: 60px;
     background-color: white;
     color: black;
+    margin-bottom: 30px;
 }
 .setCard:hover{
     box-shadow: 2px 2px 5px;

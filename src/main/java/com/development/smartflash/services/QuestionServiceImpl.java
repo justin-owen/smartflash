@@ -60,5 +60,12 @@ public class QuestionServiceImpl implements QuestionService {
         questionOptional.ifPresent(question -> questionRepository.delete(question));
     }
 
-
+    @Override
+    public Optional<QuestionDto> getQuestionById(Long questionId){
+        Optional<Question> questionOptional = questionRepository.findById(questionId);
+        if (questionOptional.isPresent()){
+            return Optional.of(new QuestionDto(questionOptional.get()));
+        }
+        return Optional.empty();
+    }
 }

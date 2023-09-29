@@ -1,0 +1,66 @@
+#newFlashCard{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+#flashCards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.containerCard{
+    width: 500px;
+    height: 200px;
+    perspective: 1000px;
+    margin-bottom: 100px;
+}
+.card{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+.card.animate{
+    transform: rotateY(.5turn);
+}
+.cardFront,
+.cardBack{
+    height: 100%;
+    width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    position: absolute;
+    background: white;
+    backface-visibility: hidden;
+}
+
+.cardBack{
+    transform: rotateY(.5turn);
+}
+
+.cardOptions span{
+    cursor: pointer;
+}
+.cardFront, .cardBack h3 {
+    text-align: center;
+}
+.options{
+    width: 30px;
+    margin-left: 450px;
+    margin-top: 10px;
+}
+button{
+    width: 90px;
+    height: 40px;
+    background-color: forestgreen;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -24,7 +24,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{questionId}")
-    public Optional<QuestionDto> getNoteById(@PathVariable Long questionId){
+    public Optional<QuestionDto> getQuestionById(@PathVariable Long questionId){
         return questionService.getQuestionById(questionId);
     }
 

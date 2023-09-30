@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Data
@@ -34,5 +35,10 @@ public class UserSetDto implements Serializable {
             this.userName = user.getUsername();
         }
 
+    }
+    public UserSetDto(UserSet set){
+        this.id = set.getId();
+        this.name = set.getName();
+        this.subject = set.getSubject();
     }
 }

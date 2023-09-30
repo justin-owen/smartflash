@@ -64,3 +64,12 @@ button{
     cursor: pointer;
     font-weight: bold;
 }
+#setHeader{
+    display: flex;
+    justify-content: center;
+}
+#setHeaderContainer{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}

@@ -22,4 +22,7 @@ public class CommonController {
 
     @GetMapping("/set")
     public String setPage(){return "set.html";}
+
+    @GetMapping("/subject")
+    public String subjectPage(){return "subject.html";}
 }

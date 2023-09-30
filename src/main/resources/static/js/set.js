@@ -8,6 +8,10 @@ const updateCardBtn = document.getElementById("submitFlashCardEdit")
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const setId = urlParams.get('id');
+const setName = urlParams.get('name');
+const setSubject = urlParams.get('subject');
+
+const setHeader = document.getElementById("setHeaderContainer")
 
 var modal = document.getElementById("myModal");
 var editModal = document.getElementById("edit-modal")
@@ -25,7 +29,7 @@ const headers = {
 
 window.onload = function(){
     getQuestions();
-    console.log(setId)
+    populateHeader();
 }
 
 btn.onclick = function() {
@@ -35,8 +39,9 @@ btn.onclick = function() {
 span.onclick = function() {
   modal.style.display = "none";
 }
-
-
+function populateHeader(){
+    setHeader.innerHTML = `<h2>Set name: ${setName}</h2><h2>Set Subject: ${setSubject}</h2>`
+}
 const submitFlashCard = async (e) => {
     e.preventDefault()
     let bodyObj = {
@@ -55,7 +60,7 @@ async function addFlashCard(obj) {
     })
         .catch(err => console.error(err.message))
     if (response.status == 200){
-        location.href=`http://localhost:8080/set?id=${setId}`
+        location.href=`http://localhost:8080/set?id=${setId}&name=${setName}&subject=${setSubject}`
     }
 }
 async function getQuestions() {

@@ -80,10 +80,9 @@ const createSetCards = (array) => {
     setContainer.innerHTML = '';
     array.forEach(obj => {
         let setCard = document.createElement("div")
-        console.log(obj);
         setCard.classList.add("setCard")
         setCard.innerHTML = `
-        <div class="header" onclick='location.href="http://localhost:8080/set?id=${obj.id}"' style='cursor:pointer;'>
+        <div class="header" onclick='location.href="http://localhost:8080/set?id=${obj.id}&name=${obj.name}&subject=${obj.subject}"' style='cursor:pointer;'>
            <h4>Set Name: ${obj.name}</h4>
            <h4>Username: ${obj.userName}</h4>
            <h4>Subject: ${obj.subject}</h4>

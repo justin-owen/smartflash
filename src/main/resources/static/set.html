@@ -14,19 +14,22 @@
     <div class="dropdown">
         <h3 class="dropbtn">Subjects</h3>
         <div class="dropdown-content">
-            <a href="#">Art</a>
-            <a href="#">Computer Science</a>
-            <a href="#">Economics</a>
-            <a href="#">English</a>
-            <a href="#">Foreign Language</a>
-            <a href="#">History</a>
-            <a href="#">Math</a>
-            <a href="#" id="science">Science</a>
+            <a href='http://localhost:8080/subject?subject=Art'>Art</a>
+            <a href="http://localhost:8080/subject?subject=Computer%20Science">Computer Science</a>
+            <a href="http://localhost:8080/subject?subject=Economics">Economics</a>
+            <a href="http://localhost:8080/subject?subject=English">English</a>
+            <a href="http://localhost:8080/subject?subject=Foreign%20Language">Foreign Language</a>
+            <a href="http://localhost:8080/subject?subject=History">History</a>
+            <a href="http://localhost:8080/subject?subject=Math">Math</a>
+            <a href="http://localhost:8080/subject?subject=Science" id="science">Science</a>
         </div>
     </div>
     <h3><a href="/mysets">My Sets</a></h3>
     <h3><a onclick="handleLogout()" id="logout" href="http://localhost:8080/login">Logout</a></h3>
 </nav>
+<section id="setHeader">
+    <div id="setHeaderContainer"></div>
+</section>
 <section id="newFlashCard">
     <h2>Add a New FlashCard</h2>
     <button id="myBtn">New FlashCard</button>

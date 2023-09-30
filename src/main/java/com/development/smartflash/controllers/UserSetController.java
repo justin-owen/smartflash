@@ -1,5 +1,6 @@
 package com.development.smartflash.controllers;
 
+import com.development.smartflash.dtos.QuestionDto;
 import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
 import com.development.smartflash.entities.User;
@@ -29,9 +30,10 @@ public class UserSetController {
     }
 
     @GetMapping("/subject/{subject}")
-    public Optional<UserSet> getSetsBySubject(@PathVariable String subject){
+    public List<UserSet> getSetsBySubject(@PathVariable String subject){
         return userSetService.getAllSetsBySubject(subject);
     }
+
 
     @PostMapping("/user/{userId}")
     public void addSet(@RequestBody UserSetDto setDto, @PathVariable Long userId){

@@ -19,9 +19,9 @@ public interface UserSetService {
     void editSetById(UserSetDto setDto);
 
     List<UserSet> getAllSetsByUserId(Long userId);
-
-    Optional<UserSet> getAllSetsBySubject(String subject);
+    List<UserSet> getAllSetsBySubject(String subject);
 
     List<UserSet> getAllSets();
+
 
 }

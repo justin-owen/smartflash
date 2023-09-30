@@ -1,7 +1,9 @@
 package com.development.smartflash.services;
 
+import com.development.smartflash.dtos.QuestionDto;
 import com.development.smartflash.dtos.UserDto;
 import com.development.smartflash.dtos.UserSetDto;
+import com.development.smartflash.entities.Question;
 import com.development.smartflash.entities.User;
 import com.development.smartflash.entities.UserSet;
 import com.development.smartflash.repositories.UserRepository;
@@ -26,7 +28,6 @@ public class UserSetServiceImpl implements UserSetService {
     @Transactional
     public void addSet(UserSetDto setDto, Long userId){
         setDto.setUserName(userRepository.findById(userId).get().getUsername());
-        System.out.println(setDto);
         UserSet set = new UserSet(setDto);
         set.setUserName(setDto.getUserName());
         userSetRepository.saveAndFlush(set);
@@ -68,8 +69,9 @@ public class UserSetServiceImpl implements UserSetService {
     }
 
     @Override
-    public Optional<UserSet> getAllSetsBySubject(String subject){
+    public List<UserSet> getAllSetsBySubject(String subject){
         return userSetRepository.findAllBySubject(subject);
     }
+
 
 }

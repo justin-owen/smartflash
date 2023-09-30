@@ -25,7 +25,6 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<QuestionDto> getAllQuestionsBySetId(Long setId){
         Optional<UserSet> setOptional = userSetRepository.findById(setId);
-        System.out.println(setId);
         if (setOptional.isPresent()){
             List<Question> questions = questionRepository.findAllBySet(setOptional.get());
             return questions.stream().map(question -> new QuestionDto(question)).collect(Collectors.toList());

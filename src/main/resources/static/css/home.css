@@ -4,6 +4,7 @@ body{
     padding: 0;
     background-color: whitesmoke;
     color: brown;
+    width:100vw;
 }
 nav{
     display: flex;
@@ -15,7 +16,58 @@ nav{
     margin-bottom: 30px;
     border-bottom: black 2px solid;
     box-shadow: black 2px 2px 8px;
-    background-color: blanchedalmond
+    background-color: blanchedalmond;
+    width: 98vw;
+}
+#logout{
+    margin-right: 50px;
+}
+.container-md{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.regLogForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+.mt-1{
+    display: flex;
+    gap: 50px;
+}
+.mt-1 button, .mt-1 a{
+    width: 80px;
+    height: 30px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+.mt-1 button{
+    background: forestgreen;
+    color: white;
+    cursor: pointer;
+}
+.mt-1 a{
+    background: blue;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
+.container-md input{
+    width: 500px;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.container-md label{
+    font-size: 25px;
 }
 a{
     color: brown;
